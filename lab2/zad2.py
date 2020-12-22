@@ -24,17 +24,29 @@ def check_if_rest_squared(b: int, p: int):
         return False
 
 
+def find_b(a, p):
+    if p % 4 == 3:
+        b = 0
+        if check_if_rest_squared(a, p):
+            b = effective_power(a, int((p + 1)/4), p)
+            return b, p - b
+
+
 def generate_point_on_curve(A, B, p):
     x = random.randint(0, p-1)
     f_x = (effective_power(x, 3, p) + A * x + B) % p
     while not check_if_rest_squared(f_x, p):
         x = random.randint(0, p - 1)
         f_x = (effective_power(x, 3, p) + A * x + B) % p
-    for y in range(0, p):
-        if effective_power(y, 2, p) == f_x:
-            return x, y
-    return None, None
+    y1, y2 = find_b(f_x, p)
+    if y1 >= 0:
+        return x, y1
+    else:
+        return x, y2
 
 
 print(generate_point_on_curve(6, 0, 11))
+print(generate_point_on_curve(7442266114772415030352768976382998406784551432504978717073346489409078922166036576925346586,
+                              2466337352720946163558594566878067703721357412568959556793569239002025886656197224980680579,
+                              7514235270718539427405383888290348979319584377272418465308674358123575315551817468363473339))
 # print(generate_point_on_curve(6, 0, 11))

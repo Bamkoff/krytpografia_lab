@@ -3,6 +3,7 @@ from module1 import fermatTest
 from module1 import effectivePower
 from module1 import checkIfRestSquared
 from module1 import reverseElement
+from module1 import squareRootInBody
 import random
 
 
@@ -33,10 +34,11 @@ def generate_point_on_curve(A, B, p):
     while not checkIfRestSquared.check_if_rest_squared(f_x, p):
         x = random.randint(0, p - 1)
         f_x = (effectivePower.effective_power(x, 3, p) + A * x + B) % p
-    for y in range(0, p):
-        if effectivePower.effective_power(y, 2, p) == f_x:
-            return x, y
-    return None, None
+    y1, y2 = squareRootInBody.square_root_in_body(f_x, p)
+    if y1 >= 0:
+        return x, y1
+    else:
+        return x, y2
 
 
 def check_if_point_belongs_to_curve(x, y, A, B, p):
