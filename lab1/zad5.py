@@ -28,7 +28,7 @@ def find_b(a, p):
     if p % 4 == 3:
         b = 0
         if check_if_rest_squared(a, p) == True:
-            b = effective_power(a, int((p + 1)/4), p)
+            b = effective_power(a, int((p + 1)//4), p)
             return b, p - b
 
 

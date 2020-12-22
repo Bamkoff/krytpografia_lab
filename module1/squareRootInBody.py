@@ -9,7 +9,7 @@ def square_root_in_body(a, p):
     if p % 4 == 3:
         b = 0
         if checkIfRestSquared.check_if_rest_squared(a, p):
-            b = checkIfRestSquared.effective_power(a, int((p + 1)/4), p)
+            b = checkIfRestSquared.effective_power(a, int((p + 1)//4), p)
             return b, p - b
 
 
