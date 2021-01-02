@@ -1,0 +1,16 @@
+# Zaimplementuj algorytm, który dekoduje punkt krzywej eliptycznej.
+# Dane:PM= (x, y)∈E(Fp)E= [A, B, p]
+# Wynik: M wiadomość - zdekodowany punkt P
+
+
+def decode_message(x_pm, y_pm, mi):
+    return (x_pm - 1) // mi
+
+
+print(decode_message(370352,
+                     14417356443933993270897911104214664176305625947425928443216873599828501207760759429427154,
+                     30
+      ))
+# N =  1027830955020116731747064446587679577800250538838890543987037169018282124510787255037623
+# mi =  30
+# Pm = ( 370352 , 14417356443933993270897911104214664176305625947425928443216873599828501207760759429427154 )

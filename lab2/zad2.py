@@ -36,14 +36,13 @@ def generate_point_on_curve(A, B, p):
     x = random.randint(0, p-1)
     # x = 285113634279465403319996581740169338329454608669814309137990174814243655992779447106132850 # test
     f_x = (effective_power(x, 3, p) + A * x + B) % p
-    print("f_x = ", f_x)
+    # print("f_x = ", f_x)
     while not check_if_rest_squared(f_x, p):
         x = random.randint(0, p - 1)
         f_x = (effective_power(x, 3, p) + A * x + B) % p
-        print("f_x = ", f_x)
+        # print("f_x = ", f_x)
     y1, y2 = find_b(f_x, p)
-    print("y1 = ", y1, ", y2 = ", y2)
-
+#    print("y1 = ", y1, ", y2 = ", y2)
     if y1 >= 0:
         return x, y1
     else:

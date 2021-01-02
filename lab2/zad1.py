@@ -1,12 +1,11 @@
 # Zaimplementuj algorytm (funkcję), która generuje losową krzywą eliptyczną nad Fp.
 # Dane: p=3 (mod 4) duża liczba pierwsza (ok. 300 bitów)
 # Wynik: A,B ∈ Fp takie, że E:Y2=X3+AX+B jest krzywą nad Fp
-from module1 import effectivePower
 import random
 
 
 def fermat_test(x):
-    return effectivePower.effective_power(2, x-1, x) == 1
+    return effective_power(2, x-1, x) == 1
 
 
 def gen_number_alt(k):
@@ -39,6 +38,12 @@ def generate_prime_number(bits: int):
     return p
 
 
+def check_if_elliptic_curve(A, B, p):
+    if (4 * effective_power(A, 3, p) + 27 * effective_power(B, 2, p)) % p == 0:
+        return False
+    return True
+
+
 def generate_elliptic_curve(p: int):
     A = random.randint(0, p-1)
     # A = 239614427021073265587611886177902927263167863041565491257781227550405368115731464059190159  # test
@@ -57,6 +62,10 @@ print(generate_elliptic_curve(generate_prime_number(300)))
 # print(generate_elliptic_curve(1183779584357076950937981497685946292711107412152534481102525547387604378262522402526266939))  # test
 # print(generate_elliptic_curve(11))
 
+# print(check_if_elliptic_curve(2930348827828621603452594644570893127308003110923772640303406468369520316510899369832645917,
+#                               2762021982970778953889805984262936548561508996406365261046193314521166738915394253239769771,
+#                               4985670436320344020750740248528860501145502501873482552544071087485014979079996438722137539))
+# print(generate_prime_number(300))
 # A = 3951502613668786427508319038807867040712174447869623952933414625226341100441832932481097361
 # B = 3224696620918517361434419666603980511362432444220251166308109762688821389727537860336481646
 # p = 4780750005034460926387212098221027725656916132929395258166013370241258731572975472324340707
