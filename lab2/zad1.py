@@ -54,7 +54,7 @@ def generate_elliptic_curve(p: int):
     while delta % p == 0:
         A = random.randint(0, p)
         B = random.randint(0, p)
-        delta = 4 * effective_power(A, 3, p) + 27 * (B, 2, p)
+        delta = 4 * effective_power(A, 3, p) + 27 * effective_power(B, 2, p)
     return A, B, p
 
 
